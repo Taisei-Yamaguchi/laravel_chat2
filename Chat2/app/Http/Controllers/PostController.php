@@ -39,17 +39,24 @@ class PostController extends Controller
         $post_id=$request->post_id;
         $post=Post::where('id',$post_id)->first();
 
-        if($post->member_id==$ses['id']){
-            return view('posts.delete_index',[
-                'member'=>$ses,
-                'post'=>$post,
-            ]);
+        if(isset($post)){ //クエリのidに一致するpostがないときはそもそもこの処理をしない
+            if($post->member_id==$ses['id']){
+                return view('posts.delete_index',[
+                    'member'=>$ses,
+                    'post'=>$post,
+                ]);
+            }else{
+                $posts=array();
+                $posts=Post::orderBy('id','DESC')
+                ->simplePaginate(10);
+                return redirect("mypage/home");
+            }
         }else{
             $posts=array();
-            $posts=Post::orderBy('id','DESC')
-            ->simplePaginate(10);
-            return redirect("mypage/home");
-        }   
+                $posts=Post::orderBy('id','DESC')
+                ->simplePaginate(10);
+                return redirect("mypage/home");
+        }
     }
 
 
@@ -72,15 +79,23 @@ class PostController extends Controller
         $post_id=$request->post_id;
         $ses=$request->session()->all();
         $main_post=Post::where('id',$post_id)->first();
-        $reply_posts=Post::where('reply_post_id',$post_id)
-        ->orderBy('id','DESC')
-        ->simplePaginate(10);
 
-        return view("posts.post_individual",[
-            'member'=>$ses,
-            'main_post'=>$main_post,
-            'reply_posts'=>$reply_posts,
-        ]);
+        if(isset($main_post)){
+            $reply_posts=Post::where('reply_post_id',$post_id)
+            ->orderBy('id','DESC')
+            ->simplePaginate(10);
+
+            return view("posts.post_individual",[
+                'member'=>$ses,
+                'main_post'=>$main_post,
+                'reply_posts'=>$reply_posts,
+            ]);
+        }else{
+            $posts=array();
+            $posts=Post::orderBy('id','DESC')
+            ->simplePaginate(10);
+            return redirect("mypage/home");
+        }
     }
 
 
