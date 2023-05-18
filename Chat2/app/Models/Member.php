@@ -16,7 +16,7 @@ class Member extends Model
         'name'=>'required|max:255',
         'mail'=>'required|max:255', //本当は 'required'じゃなくて 'email'
         'password'=>'required|min:5|max:20',
-        'image'=>'',
+        'image'=>'required',
 
     );
 
