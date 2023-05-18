@@ -1,0 +1,51 @@
+
+body{
+    background-color:rgb(216, 249, 249);
+}
+
+a{
+    text-decoration: none;
+}
+
+.member_infomation{
+    color:black;
+    font-size: 10;
+}
+
+.headtitle{
+    background-color:rgb(255, 246, 77);
+    color:aliceblue;
+}
+.member_wrapper{
+    padding-top: 10px;
+}
+
+.member_image{
+    border-width: thick;
+    border-style:solid;
+    border-color:rgb(221, 222, 216);
+    ;
+    padding-top:0px;
+    align-content:center;
+    border-radius: 100%;
+}
+
+.deletion{
+    text-decoration: none;
+    color:red;
+    font-size: 7px;
+}
+
+.sub{
+    color:rgb(143, 59, 240);
+    font-size:7px;
+}
+
+.member_image2{
+    border-radius:100%;
+}
+
+.coment2{
+    background-color: rgb(196, 245, 194);
+}
+
