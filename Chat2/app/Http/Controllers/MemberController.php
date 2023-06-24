@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\Member;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Client\HttpClient;
 
 class MemberController extends Controller
 {
@@ -21,7 +22,6 @@ class MemberController extends Controller
 //to New Registration Screen
     public function add(Request $request)
     {
-        //登録確認画面から戻った場合、アップデートされたimageを削除する処理を入れる。
         return view('member.register_index');
     }
 

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\PostController;
-
+use App\Http\Controllers\MemberIntegrateController;
 use App\Http\Middleware\LoginMemberCheck;
 use App\Http\Middleware\ShowPosts;
 
@@ -30,6 +30,10 @@ Route::get('mypage/home',[MainController::class,'home_index'])->middleware(Login
 
 Route::get('member/add',[MemberController::class,'add']);
 Route::post('member/add',[MemberController::class,'create']);
+
+//2023.6.23 snackアプリからメンバー情報を取得し、chatでも利用したい。
+Route::get('member/integrate',[MemberIntegrateController::class,'memberIntegrate_index']);
+Route::post('member/integrate',[MemberIntegrateController::class,'getMemberFromSnack']);
 
 Route::get('mypage/member_delete',[MemberController::class,'delete_index'])->middleware(LoginMemberCheck::class);
 Route::post('mypage/member_delete',[MemberCOntroller::class,'delete']);

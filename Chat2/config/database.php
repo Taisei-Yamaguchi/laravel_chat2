@@ -63,6 +63,19 @@ return [
             ]) : [],
         ],
 
+        'chat' => [
+            'driver' => 'mysql',
+            'host' => 'localhost',
+            'database' => 'chat',
+            'username' => 'root',
+            'password' => '',
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => false,
+        ],
+        
+
         'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),
