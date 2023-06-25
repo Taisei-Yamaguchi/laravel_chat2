@@ -37,12 +37,17 @@ class MemberIntegrateController extends Controller
             );
         }
 
+        //本番環境で変更。
+        $publicId = '';
+        $secretKey = '';
+        $url='';
 
 
-          // Chat APIにリクエストを送信
-          //ここのエンドポイントは本番環境で変えます。
-        //   http://localhost/member_integrate_API/public/api/get_member
-        $response = Http::post('http://localhost/member_integrate_API/public/api/get_member', [
+          // Chat APIにリクエストを送信。
+        $response = Http::withHeaders([
+            'X-Public-Id'=>$publicId,
+            'X-Secret-Key'=>$secretKey,
+        ])->post($url, [
             'mail' => $form['mail'],
             'password' => $form['password']
         ]);
@@ -73,8 +78,8 @@ class MemberIntegrateController extends Controller
 
 
             // //つづいて、snack側にあるimageをダウンロードする。
-            
-                $imageUrl = 'http://localhost/laravel_snack1.2/Snack1.0/public/storage/member_images/'.$image;  // 画像のURL //本番環境で変更
+            // 画像ダウンロード先のURL //本番環境で変更
+                $imageUrl = 'http://localhost/laravel_snack1.2/Snack1.0/public/storage/member_images/'.$image;  
                 // // HTTPリクエストを送信して画像を取得
                 $imageData = @file_get_contents($imageUrl);
                 

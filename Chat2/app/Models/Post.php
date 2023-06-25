@@ -20,4 +20,12 @@ class Post extends Model
     public function getData(){
         return $this->id.':'.$this->message.'('.$this->member->name.')';
     }
+
+    public function getName(){
+        return $this->member->name;
+    }
+
+    public function getImage(){
+        return $this->member->image;
+    }
 }

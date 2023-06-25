@@ -25,6 +25,9 @@
     <hr>
     @if(isset($posts))
     @foreach($posts as $post)
+
+        <!--ここで、postからメンバーの情報が取得できていないのが問題。
+    member情報を消しているのに、postをそのままにしていたのが問題。消すときは両方一緒に消す必要あり。-->
         <img src="../storage/member_images/{{$post->member->image}}" width='48' height='48' align='left'>
         <p>({{$post->member->name}})
             <br>
