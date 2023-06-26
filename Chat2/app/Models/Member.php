@@ -10,7 +10,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Member extends Model
 {
-    protected $connection = 'chat';
+    //これはないほうがいい？
+    // protected $connection = 'chat';
     protected $guarded=array('id');
 
     public static $rules=array(
